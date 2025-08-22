@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogicLoop - HD Wallpapers for Everyone</title>
+
+    <!-- Website Icon (Favicon) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='black'/><text x='50' y='50' font-size='50' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Inter, sans-serif' font-weight='bold'>OK</text></svg>">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles for a polished look */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #2d3748;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* --- NEW: Animation Styles --- */
+        .animated {
+            opacity: 0; /* Initially hidden */
+            animation-fill-mode: forwards; /* Stay at the final state */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade-in { animation-name: fadeIn; animation-duration: 0.5s; animation-timing-function: ease-in-out; }
+        .animate-fade-in-down { animation-name: fadeInDown; animation-duration: 0.6s; animation-timing-function: ease-out; }
+        .animate-fade-in-up { animation-name: fadeInUp; animation-duration: 0.6s; animation-timing-function: ease-out; }
+    </style>
+    <script>
+        // Tailwind CSS dark mode configuration
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#f9fafb',
+                            dark: '#111827',
+                            primary: '#3b82f6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-light dark:bg-brand-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="flex items-center">
+                        <!-- Corrected LogicLoop SVG Logo with proper kerning -->
+                        <svg class="h-8" viewBox="0 0 155 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" /> <!-- Blue -->
+                                    <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" /> <!-- Purple -->
+                                </linearGradient>
+                            </defs>
+                            <text x="0" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="bold" class="fill-gray-900 dark:fill-white">LogicL</text>
+                            <text x="80" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="bold" fill="url(#logoGradient)">oo</text>
+                            <text x="110" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="bold" class="fill-gray-900 dark:fill-white">p</text>
+                        </svg>
+                    </a>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary">
+                        <svg id="theme-icon-light" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <svg id="theme-icon-dark" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <!-- Hero Section -->
+        <section class="text-center py-12 md:py-20">
+            <h2 data-animate="fade-in-down" style="--delay: 0.2s;" class="animated text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-4">Find Your Next Wallpaper</h2>
+            <p data-animate="fade-in-down" style="--delay: 0.4s;" class="animated text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">Discover high-quality wallpapers curated for your devices. Free to download and use.</p>
+            <div data-animate="fade-in-up" style="--delay: 0.6s;" class="animated max-w-2xl mx-auto">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <input id="search-input" type="search" placeholder="Search for 'Nature', 'Abstract', 'Cars'..." class="w-full p-4 pl-12 text-lg border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-full focus:ring-brand-primary focus:border-brand-primary transition-shadow duration-200 shadow-sm hover:shadow-md focus:shadow-lg">
+                </div>
+            </div>
+        </section>
+
+        <!-- Category Filters -->
+        <section class="mb-10">
+            <div id="category-chips" class="flex flex-wrap items-center justify-center gap-2 md:gap-4">
+                <button data-filter="all" class="category-chip active">All</button>
+                <button data-filter="nature" class="category-chip">Nature</button>
+                <button data-filter="abstract" class="category-chip">Abstract</button>
+                <button data-filter="space" class="category-chip">Space</button>
+                <button data-filter="feather" class="category-chip">Feather</button>
+                <button data-filter="quotes" class="category-chip">Quotes</button>
+                <button data-filter="technology" class="category-chip">Technology</button>
+                <button data-filter="animals" class="category-chip">Animals</button>
+                <button data-filter="minimalist" class="category-chip">Minimalist</button>
+                <button data-filter="cars" class="category-chip">Cars</button>
+            </div>
+        </section>
+
+        <!-- Wallpaper Gallery -->
+        <section id="gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+            <!-- Gallery items will be injected here by JavaScript -->
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col items-center justify-center">
+                <!-- LogicLoop SVG Logo in Footer -->
+                <a href="#" class="flex items-center mb-4">
+                    <svg class="h-8" viewBox="0 0 155 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradientFooter" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" /> <!-- Blue -->
+                                <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" /> <!-- Purple -->
+                            </linearGradient>
+                        </defs>
+                        <text x="0" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="bold" class="fill-gray-900 dark:fill-white">LogicL</text>
+                        <text x="80" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="bold" fill="url(#logoGradientFooter)">oo</text>
+                        <text x="110" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="bold" class="fill-gray-900 dark:fill-white">p</text>
+                    </svg>
+                </a>
+                <div class="text-center text-gray-500 dark:text-gray-400">
+                    <p>&copy; 2025 LogicLoop. All rights reserved.</p>
+                    <p class="text-sm mt-1">Designed by <a href="https://placehold.co/" class="hover:text-brand-primary" target="_blank" rel="noopener noreferrer">Om Nagnath Kale</a>.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Image Modal with Navigation -->
+    <div id="image-modal" class="fixed inset-0 bg-black bg-opacity-0 z-50 flex items-center justify-center p-4 hidden transition-all duration-300 ease-in-out" style="backdrop-filter: blur(0px);">
+        <div id="modal-container" class="relative bg-white dark:bg-gray-900 rounded-xl shadow-2xl max-w-6xl w-full max-h-[90vh] flex flex-col md:flex-row overflow-hidden transform scale-95 opacity-0 transition-all duration-300 ease-out">
+            <!-- Close Button -->
+            <button id="close-modal" class="absolute top-3 right-3 text-gray-400 bg-white/30 dark:bg-black/30 backdrop-blur-sm rounded-full p-1.5 hover:bg-gray-200 dark:hover:bg-gray-700 z-20 transition-colors">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+
+            <!-- Navigation Buttons -->
+            <button id="modal-prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white bg-black/30 rounded-full p-2 hover:bg-black/50 transition-colors">
+                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+             <button id="modal-next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white bg-black/30 rounded-full p-2 hover:bg-black/50 transition-colors">
+                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
+
+            <!-- Image Section -->
+            <div class="w-full md:w-2/3 flex items-center justify-center bg-gray-100 dark:bg-gray-800 p-2">
+                <img id="modal-image" src="" alt="Wallpaper Preview" class="max-w-full max-h-[85vh] object-contain rounded-lg">
+            </div>
+
+            <!-- Details Section -->
+            <div class="w-full md:w-1/3 p-6 flex flex-col justify-between overflow-y-auto">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Details</h3>
+                    <div class="mt-4 space-y-3 text-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="font-semibold text-gray-700 dark:text-gray-300 w-20">Category:</span>
+                            <span id="modal-category" class="inline-block bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full px-3 py-1 text-xs font-semibold"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <a id="download-btn" href="#" download="wallpaper.png" class="w-full bg-brand-primary text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-blue-600 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-blue-500/50">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                        Download in 4K
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Data for Wallpapers ---
+            const wallpapers = [
+                // Original wallpapers
+
+                { id: 1, category: 'quotes', alt: 'Quotes', src: 'motivational1.png' },
+                { id: 2, category: 'quotes', alt: 'Quotes', src: 'motivational2.png' },
+                { id: 3, category: 'space', alt: 'A distant galaxy with stars', src: 'space1.png' },
+                { id: 4, category: 'feather', alt: 'A single white feather on a grey background', src: 'feather1.png' },
+                { id: 5, category: 'quotes', alt: 'Quote: Dream Big', src: 'motivational3.png' },
+                { id: 6, category: 'nature', alt: 'A serene forest with sunbeams', src: 'nature1.png' },
+                { id: 7, category: 'abstract', alt: 'Wavy lines of blue and purple', src: 'abstract1.png' },
+                { id: 8, category: 'space', alt: 'Planet Earth from the moon', src: 'space2.png' },
+                { id: 9, category: 'feather', alt: 'Simple grey texture with color feather', src: 'feather2.png' },
+                { id: 10, category: 'quotes', alt: 'Quote: Stay Positive', src: 'motivational4.png' },
+                { id: 11, category: 'nature', alt: 'A beautiful sunset over the ocean', src: 'nature2.png' },
+                { id: 12, category: 'feather', alt: 'Red and orange paint splash', src: 'feather3.png' },
+                { id: 13, category: 'space', alt: 'A vibrant nebula cloud', src: 'space3.png' },
+                { id: 14, category: 'feather', alt: 'Black and white diagonal lines', src: 'feather4.png' },
+                { id: 15, category: 'quotes', alt: 'Quote:Never Give up', src: 'motivational5.png' },
+                { id: 16, category: 'nature', alt: 'A field of yellow sunflowers', src: 'nature3.png' },
+
+                { id: 17, category: 'quotes', alt: 'Motivational wall art with bold typography', src: 'motivational6.png' },
+                { id: 18, category: 'quotes', alt: 'Positive vibes modern text wallpaper', src: 'motivational7.png' },
+                { id: 19, category: 'space', alt: 'Galaxy view with shining stars wallpaper', src: 'space4.png' },
+                { id: 20, category: 'feather', alt: 'Soft floating feather digital wallpaper', src: 'feather5.png' },
+                { id: 21, category: 'quotes', alt: 'Quote: Dream big stylish digital quote wallpaper', src: 'motivational8.png' },
+                { id: 22, category: 'nature', alt: 'Sunset over ocean minimalist wallpaper', src: 'nature4.png' },
+                { id: 23, category: 'abstract', alt: 'Abstract colorful waves for wallpaper', src: 'abstract2.png' },
+                { id: 24, category: 'space', alt: 'Vibrant nebula cosmic background', src: 'space5.png' },
+                { id: 25, category: 'feather', alt: 'Elegant feather with artistic colors', src: 'feather6.png' },
+                { id: 26, category: 'quotes', alt: 'Quote:Never give up neon quote background', src: 'motivational9.png' },
+                { id: 27, category: 'nature', alt: 'Bright sunflower field summer wallpaper', src: 'nature5.png' },
+                { id: 28, category: 'feather', alt: 'Feather splash in watercolor effect', src: 'feather7.png' },
+                { id: 29, category: 'space', alt: 'Moonlight glowing space art', src: 'space6.png' },
+                { id: 30, category: 'feather', alt: 'Minimal feather on pastel background', src: 'feather8.png' },
+                { id: 31, category: 'quotes', alt: 'Quote:Never Give up', src: 'motivational10.png' },
+                { id: 32, category: 'nature', alt: 'Misty mountains digital background', src: 'nature6.png' },
+                { id: 33, category: 'technology', alt: 'Circuit board pattern', src: 'tech1.png' },
+                { id: 34, category: 'technology', alt: 'Abstract glowing data streams', src: 'tech2.png' },
+                { id: 35, category: 'minimalist', alt: 'Simple geometric shapes', src: 'mini1.png' },
+                { id: 36, category: 'minimalist', alt: 'A single object on a plain background', src: 'mini2.png' },
+                { id: 37, category: 'animals', alt: 'A majestic lion', src: 'animal1.png' },
+                { id: 38, category: 'animals', alt: 'A colorful tropical bird', src: 'animal2.png' },
+                { id: 39, category: 'cars', alt: 'A sleek red sports car', src: 'car1.png' },
+                { id: 40, category: 'cars', alt: 'A classic vintage automobile', src: 'car2.png' }
+            ];
+
+            const gallery = document.getElementById('gallery');
+            let currentWallpaperIndex = 0;
+            let currentFilteredWallpapers = [...wallpapers];
+
+            function displayWallpapers(items) {
+                gallery.innerHTML = items.map((wallpaper, index) => {
+                    const originalIndex = wallpapers.findIndex(w => w.id === wallpaper.id);
+                    // NEW: Added style for staggered animation delay
+                    return `
+                        <div class="gallery-item group relative overflow-hidden rounded-xl shadow-lg cursor-pointer animated animate-fade-in" style="animation-delay: ${index * 0.05}s;" data-index="${originalIndex}" data-category="${wallpaper.category}" data-alt="${wallpaper.alt}" data-src="${wallpaper.src}">
+                            <img src="${wallpaper.src}" alt="${wallpaper.alt}" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/ffffff?text=Image+Not+Found';">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-end p-4">
+                                <p class="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">${wallpaper.alt}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                attachModalListeners();
+            }
+
+            // Theme Toggle Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const lightIcon = document.getElementById('theme-icon-light');
+            const darkIcon = document.getElementById('theme-icon-dark');
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                darkIcon.classList.toggle('hidden', !isDark);
+                lightIcon.classList.toggle('hidden', isDark);
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+
+            // Filter and Search Logic
+            const categoryChipsContainer = document.getElementById('category-chips');
+            const searchInput = document.getElementById('search-input');
+
+            function filterAndSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const activeFilter = categoryChipsContainer.querySelector('.category-chip.active').getAttribute('data-filter');
+
+                currentFilteredWallpapers = wallpapers.filter(wallpaper => {
+                    const matchesCategory = activeFilter === 'all' || wallpaper.category === activeFilter;
+                    const matchesSearch = wallpaper.alt.toLowerCase().includes(searchTerm) || wallpaper.category.toLowerCase().includes(searchTerm);
+                    return matchesCategory && matchesSearch;
+                });
+
+                displayWallpapers(currentFilteredWallpapers);
+            }
+
+            categoryChipsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('category-chip')) {
+                    categoryChipsContainer.querySelectorAll('.category-chip').forEach(chip => chip.classList.remove('active'));
+                    e.target.classList.add('active');
+                    filterAndSearch();
+                }
+            });
+
+            searchInput.addEventListener('input', filterAndSearch);
+
+            // Modal Logic
+            const modal = document.getElementById('image-modal');
+            const modalContainer = document.getElementById('modal-container');
+            const modalImage = document.getElementById('modal-image');
+            const closeModalBtn = document.getElementById('close-modal');
+            const downloadBtn = document.getElementById('download-btn');
+            const modalCategory = document.getElementById('modal-category');
+            const modalPrevBtn = document.getElementById('modal-prev-btn');
+            const modalNextBtn = document.getElementById('modal-next-btn');
+
+            function updateModalContent(wallpaper) {
+                modalImage.src = wallpaper.src;
+                modalImage.alt = wallpaper.alt;
+                modalCategory.textContent = wallpaper.category.charAt(0).toUpperCase() + wallpaper.category.slice(1);
+                downloadBtn.href = wallpaper.src;
+                downloadBtn.download = `${wallpaper.alt.replace(/\s+/g, '-')}-wallpaper.png`;
+            }
+
+            function openModal(index) {
+                currentWallpaperIndex = parseInt(index);
+                updateModalContent(wallpapers[currentWallpaperIndex]);
+
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => {
+                    modal.classList.remove('bg-opacity-0');
+                    modal.style.backdropFilter = 'blur(4px)';
+                    modalContainer.classList.remove('opacity-0');
+                    modalContainer.classList.remove('scale-95');
+                }, 10);
+            }
+
+            function closeModal() {
+                modal.classList.add('bg-opacity-0');
+                modal.style.backdropFilter = 'blur(0px)';
+                modalContainer.classList.add('opacity-0');
+                modalContainer.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+
+            function attachModalListeners() {
+                document.querySelectorAll('.gallery-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        openModal(item.dataset.index);
+                    });
+                });
+            }
+
+            function navigateModal(direction) {
+                const currentId = wallpapers[currentWallpaperIndex].id;
+                let currentIndexInFiltered = currentFilteredWallpapers.findIndex(w => w.id === currentId);
+
+                if (currentIndexInFiltered === -1) return;
+
+                currentIndexInFiltered = (currentIndexInFiltered + direction + currentFilteredWallpapers.length) % currentFilteredWallpapers.length;
+
+                const nextWallpaper = currentFilteredWallpapers[currentIndexInFiltered];
+                const originalIndex = wallpapers.findIndex(w => w.id === nextWallpaper.id);
+
+                currentWallpaperIndex = originalIndex;
+                updateModalContent(nextWallpaper);
+            }
+
+            modalPrevBtn.addEventListener('click', () => navigateModal(-1));
+            modalNextBtn.addEventListener('click', () => navigateModal(1));
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('hidden')) {
+                    if (e.key === 'Escape') closeModal();
+                    if (e.key === 'ArrowLeft') modalPrevBtn.click();
+                    if (e.key === 'ArrowRight') modalNextBtn.click();
+                }
+            });
+
+            // --- NEW: Animation Trigger ---
+            // This function will apply the animations to elements with data-animate attribute
+            function triggerAnimations() {
+                document.querySelectorAll('[data-animate]').forEach(el => {
+                    const animationName = el.dataset.animate;
+                    const delay = el.style.getPropertyValue('--delay') || '0s';
+                    el.classList.add(`animate-${animationName}`);
+                    el.style.animationDelay = delay;
+                });
+
+                // Animate category chips with a stagger effect
+                document.querySelectorAll('#category-chips .category-chip').forEach((chip, index) => {
+                    chip.classList.add('animated', 'animate-fade-in-up');
+                    chip.style.animationDelay = `${0.8 + index * 0.08}s`;
+                });
+            }
+
+            // Initial Display
+            filterAndSearch();
+            triggerAnimations();
+
+            // Inject CSS for category chips
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .category-chip {
+                    padding: 0.5rem 1.25rem;
+                    border-radius: 9999px;
+                    font-weight: 500;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+                    background-color: #e5e7eb; /* gray-200 */
+                    color: #374151; /* gray-700 */
+                }
+                .dark .category-chip {
+                    background-color: #374151; /* gray-700 */
+                    color: #d1d5db; /* gray-300 */
+                }
+                .category-chip:hover {
+                    background-color: #d1d5db; /* gray-300 */
+                }
+                .dark .category-chip:hover {
+                    background-color: #4b5563; /* gray-600 */
+                }
+                .category-chip.active {
+                    background-color: #3b82f6; /* brand-primary */
+                    color: white;
+                    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+                }
+                .dark .category-chip.active {
+                    background-color: #3b82f6; /* brand-primary */
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+
+</body>
+</html>
